@@ -1,4 +1,4 @@
-from .connection import Connection, config
+from connection import Connection, config
 import json
 
 

@@ -1,5 +1,5 @@
 # from exceptions import ApiException
-from .client import Client
+from client import Client
 import json
 
 class Tagger(Client):

@@ -1,4 +1,4 @@
-import http.client as httplib, urllib
+import httplib, urllib
 
 config = {
     'url': 'www.clarin.si',
@@ -28,15 +28,15 @@ class Connection:
         return Connection._instance
 
     def get(self, url, params, token):
-        requestUrl = url + "?" + urllib.parse.urlencode(params)
-        headers = {"Authorization": token }
+        requestUrl = url + "?" + urllib.urlencode(params)
+        headers = {"Authorization": token.decode('utf-8')}
         self._connection.request("GET", requestUrl, headers=headers)
         return self._connection.getresponse()
 
     def post(self, url, params, token=None):
         headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
         if token is not None:
-            headers["Authorization"] = token
+            headers["Authorization"] = token.decode('utf-8')
 
-        self._connection.request("POST", url, urllib.parse.urlencode(params), headers)
+        self._connection.request("POST", url, urllib.urlencode(params), headers)
         return self._connection.getresponse()

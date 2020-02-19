@@ -1,17 +1,17 @@
 # from exceptions import ApiException
-from .client import Client
+from client import Client
 import json
 import re
 
 
-class Lemmatiser(Client):
+class Parser(Client):
     """Lexicon class"""
 
     def __init__(self, language='hr'):
-        super(Lemmatiser, self).__init__()
+        super(Parser, self).__init__()
         self.language = language
 
-    def lemmatise(self, text, format='json'):
+    def tagLemmatiseParse(self, text, format='json'):
 
         if not self._auth.hasToken():
             raise ValueError("Unauthorized")
@@ -31,4 +31,4 @@ class Lemmatiser(Client):
             'format': format
         }
 
-        return self.queryApi("{0}/lemmatise".format(self.language), params)
+        return self.queryApi("{0}/tag_lemmatise_depparse".format(self.language), params)

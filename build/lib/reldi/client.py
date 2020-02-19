@@ -1,6 +1,6 @@
 # from exceptions import ApiException
-from .connection import Connection, config
-from .auth import Auth
+from connection import Connection, config
+from auth import Auth
 import uuid
 
 class Client(object):

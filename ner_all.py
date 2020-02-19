@@ -35,5 +35,5 @@ if __name__ == "__main__":
     else:
         files=[e for e in os.listdir(args.path) if e.endswith('.txt')]
         for index,file in enumerate(files):
-            print 'Processing',index+1,'/',len(files)
+            print( 'Processing',index+1,'/',len(files))
             write(json.loads(ner_tagger.tag(open(os.path.join(args.path, file)).read().decode(coding).encode('utf8'))), open(os.path.join(args.path, file) + '.tagNERlem', 'w'))
